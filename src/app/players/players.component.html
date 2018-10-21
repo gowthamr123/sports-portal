@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <div class="card mt-3 tab-card">
+        <div class="card-header tab-card-header">
+          <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active show" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="One" aria-selected="true">Country</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="Two" aria-selected="false">Players Role</a>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-content" id="myTabContent" *ngIf="errorMessage == ''; else showError">
+          <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
+            <div class="list-group list-group-tree well" *ngFor="let player of data | groupBy:'country'">
+
+              <a href="javascript:void(0);" class="list-group-item" data-toggle="collapse">
+                <i class="fa fa-chevron"></i>
+
+                {{ player.key }}
+              </a>
+              <div class="list-group collapse" *ngFor="let value of player.value">
+                <span [ngClass]="{'context-menu-one':isAdminUser}">
+                  <a href="javascript:void(0);" (contextmenu)="setDeletePlayerIndex(value.index)" (click)="setPlayerData(value)" class="list-group-item" data-toggle="collapse" *ngFor="let value of player.value">
+                    {{value.name}}
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
+
+            <div class="list-group list-group-tree well" *ngFor="let player of data | groupBy:'role'">
+
+              <a href="javascript:void(0);" class="list-group-item" data-toggle="collapse">
+                <i class="fa fa-chevron"></i>
+
+                {{ player.key }}
+              </a>
+              <div class="list-group collapse" *ngFor="let value of player.value">
+                  <span class="context-menu-one">
+                      <a href="javascript:void(0);" (contextmenu)="setDeletePlayerIndex(value.index)" (click)="setPlayerData(value)" class="list-group-item" data-toggle="collapse" *ngFor="let value of player.value">
+                        {{value.name}}
+    
+                      </a>
+                    </span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        <ng-template #showError>
+          <br/>
+          <div class="alert alert-danger" role="alert">
+            {{errorMessage}}
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4" style="margin-top:16px" *ngIf="playerData !== ''; else selectPlayer">
+      <div ngDraggable class="drag-block">
+        <img [src]="playerData.photo" alt="No Image" class="img-responsive" onError="src='./assets/images/empty.jpg';" style="width: 100%;height: 100%;">
+      </div>
+    </div>
+
+    <ng-template #selectPlayer>
+        <div class="col-sm-12 col-md-4" style="margin-top:16px">
+            <h4> Select a player from tree view </h4>
+        </div>
+    </ng-template>
+
+    <div class="col-sm-12 col-md-4" style="margin-top:16px" *ngIf="playerData !== ''">
+      <app-player-edit [selectedPlayer]="playerData"> </app-player-edit>
+    </div>
+  </div>
+</div>

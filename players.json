@@ -1,0 +1,45 @@
+[  
+   {
+	  "id": 0,
+	  "country":"India",
+      "name":"Kohli",
+      "photo":"./assets/images/kohli.jpg",
+      "role":"Batsman"
+   },
+   {  
+	  "index": 1,
+	  "country":"India",
+      "name":"Dhoni",
+      "photo":"./assets/images/dhoni.jpg",
+      "role":"keeper"		
+   },
+   {
+      "index": 2,   
+	  "country":"South Africa",
+      "name":"Kallis",
+      "photo":"./assets/images/kallis.jpg",
+      "role":"All rounder"
+   },
+   {
+      "index": 3,   
+	  "country":"South Africa",
+      "name":"Steyn",
+      "photo":"./assets/images/steyn.jpg",
+      "role":"Bowler"
+   },
+   {
+      "index": 4,   
+	  "country":"Australia",
+      "name":"pointing",
+      "photo":"./assets/images/pointing.jpg",
+      "role":"Batsman"
+   },
+   
+   {
+      "index": 5,   
+	  "country":"Australia",
+      "name":"warne",
+      "photo":"./assets/images/warne.jpg",
+      "role":"Bowler"
+   }
+]

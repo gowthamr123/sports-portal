@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  authUrl: '/api/user/authenticate',
+  postUrl: 'https://players-e6869.firebaseio.com/data.json' 
 };
 
 /*
